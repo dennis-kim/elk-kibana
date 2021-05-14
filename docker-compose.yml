@@ -1,0 +1,15 @@
+version: '2'
+services:
+  shop-kibana:
+    image: kibana:${KIBANA_VERSION}
+    container_name: ${KIBANA_CONTAINER_NAME}
+    restart: unless-stopped
+    environment:
+      LANG: en_US.utf8
+      SERVER_NAME: kibana.example.org
+      SERVER_PORT: ${KIBANA_PORT}
+      ELASTICSEARCH_HOSTS: ${ELASTICSEARCH_HOSTS}
+      TZ: Asia/Seoul
+    ports:
+      - ${KIBANA_PORT}:${KIBANA_PORT}
+    network_mode: bridge
